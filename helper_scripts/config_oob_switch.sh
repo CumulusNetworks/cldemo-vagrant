@@ -20,7 +20,7 @@ echo -e "% endfor\n" >> /etc/network/interfaces
 echo -e "auto bridge" >> /etc/network/interfaces
 echo -e "iface bridge" >> /etc/network/interfaces
 echo -e "bridge-ports glob swp1-15" >> /etc/network/interfaces
-echo -e "address 192.168.0.1/24" >> /etc/network/interfaces
+echo -e "address 192.168.100.1/24" >> /etc/network/interfaces
 
 #echo -e "bridge-stp on" >> /etc/network/interfaces
 
