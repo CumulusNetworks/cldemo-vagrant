@@ -35,7 +35,7 @@
   notify: restart bind9
 
 - name: install reverse db.lab.local zone file
-  template: src=db.0.168.192.in-addr.arpa.j2 dest=/etc/bind/zones/db.0.168.192.in-addr.arpa
+  template: src=db.100.168.192.in-addr.arpa.j2 dest=/etc/bind/zones/db.100.168.192.in-addr.arpa
   notify: restart bind9
 
 - name: set up bind forwarding

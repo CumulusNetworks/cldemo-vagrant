@@ -3,12 +3,12 @@ ravello: true
 wbench_hostname: 'oob-mgmt-server'
 wbench_user: 'cumulus'
 wbench_passwd: '$6$wJ9OETRI$KX2hMXIuGXtXjMQwH58AsFWpQRnSHKT2OF/6GfPSxqD4e.kF.eyUQeWhnOAg5OxEuCHsOLYybweFv3HmPdBw7/'
-wbench_eth1_network: '192.168.0.0'
-wbench_eth1_ip: '192.168.0.254'
+wbench_eth1_network: '192.168.100.0'
+wbench_eth1_ip: '192.168.100.254'
 wbench_eth1_mask: '255.255.255.0'
 
-wbench_dhcp_range_start: '192.168.0.100'
-wbench_dhcp_range_end: '192.168.0.200'
+wbench_dhcp_range_start: '192.168.100.100'
+wbench_dhcp_range_end: '192.168.100.200'
 
 dns_search1: 'lab.local'
 dns_search2: 'cwb.cumulusnetworks.com'

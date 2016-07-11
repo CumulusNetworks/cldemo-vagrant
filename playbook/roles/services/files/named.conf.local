@@ -1,7 +1,7 @@
 // Created by Ansible
-zone "0.168.192.in-addr.arpa" {
+zone "100.168.192.in-addr.arpa" {
   type master;
-  file "/etc/bind/zones/db.0.168.192.in-addr.arpa";
+  file "/etc/bind/zones/db.100.168.192.in-addr.arpa";
   allow-transfer {
   };
 
