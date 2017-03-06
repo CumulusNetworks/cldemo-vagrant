@@ -286,7 +286,7 @@ Vagrant.configure("2") do |config|
   ##### DEFINE VM for oob-mgmt-server #####
   config.vm.define "oob-mgmt-server" do |device|
     device.vm.hostname = "oob-mgmt-server"
-    device.vm.box = "boxcutter/ubuntu1604"
+    device.vm.box = "ubuntu/xenial64"
 
 
     device.vm.provider "virtualbox" do |v|
@@ -342,11 +342,11 @@ Vagrant.configure("2") do |config|
 
 
     # Apply the interface re-map
-    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "chmod 755 /home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:5f eth1"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -vm --vagrant-name=eth0"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -s"
+    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "chmod 755 /home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:5f eth1"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -vm --vagrant-name=eth0"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -s"
     device.vm.provision :shell , :inline => $script
 
   end
@@ -356,12 +356,12 @@ Vagrant.configure("2") do |config|
   config.vm.define "oob-mgmt-switch" do |device|
     device.vm.hostname = "oob-mgmt-switch"
     device.vm.box = "CumulusCommunity/cumulus-vx"
-    device.vm.box_version = "3.2.0"
+    device.vm.box_version = "3.2.1"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_oob-mgmt-switch"
       v.customize ["modifyvm", :id, '--audiocontroller', 'AC97', '--audio', 'Null']
-      v.memory = 256
+      v.memory = 512
     end
     device.vm.synced_folder ".", "/vagrant", disabled: true
 
@@ -465,7 +465,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "exit02" do |device|
     device.vm.hostname = "exit02"
     device.vm.box = "CumulusCommunity/cumulus-vx"
-    device.vm.box_version = "3.2.0"
+    device.vm.box_version = "3.2.1"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_exit02"
@@ -554,7 +554,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "exit01" do |device|
     device.vm.hostname = "exit01"
     device.vm.box = "CumulusCommunity/cumulus-vx"
-    device.vm.box_version = "3.2.0"
+    device.vm.box_version = "3.2.1"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_exit01"
@@ -642,7 +642,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "spine02" do |device|
     device.vm.hostname = "spine02"
     device.vm.box = "CumulusCommunity/cumulus-vx"
-    device.vm.box_version = "3.2.0"
+    device.vm.box_version = "3.2.1"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_spine02"
@@ -720,7 +720,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "spine01" do |device|
     device.vm.hostname = "spine01"
     device.vm.box = "CumulusCommunity/cumulus-vx"
-    device.vm.box_version = "3.2.0"
+    device.vm.box_version = "3.2.1"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_spine01"
@@ -798,7 +798,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "leaf04" do |device|
     device.vm.hostname = "leaf04"
     device.vm.box = "CumulusCommunity/cumulus-vx"
-    device.vm.box_version = "3.2.0"
+    device.vm.box_version = "3.2.1"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_leaf04"
@@ -886,7 +886,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "leaf02" do |device|
     device.vm.hostname = "leaf02"
     device.vm.box = "CumulusCommunity/cumulus-vx"
-    device.vm.box_version = "3.2.0"
+    device.vm.box_version = "3.2.1"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_leaf02"
@@ -974,7 +974,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "leaf03" do |device|
     device.vm.hostname = "leaf03"
     device.vm.box = "CumulusCommunity/cumulus-vx"
-    device.vm.box_version = "3.2.0"
+    device.vm.box_version = "3.2.1"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_leaf03"
@@ -1062,7 +1062,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "leaf01" do |device|
     device.vm.hostname = "leaf01"
     device.vm.box = "CumulusCommunity/cumulus-vx"
-    device.vm.box_version = "3.2.0"
+    device.vm.box_version = "3.2.1"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_leaf01"
@@ -1149,7 +1149,7 @@ Vagrant.configure("2") do |config|
   ##### DEFINE VM for edge01 #####
   config.vm.define "edge01" do |device|
     device.vm.hostname = "edge01"
-    device.vm.box = "boxcutter/ubuntu1604"
+    device.vm.box = "ubuntu/xenial64"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_edge01"
@@ -1184,13 +1184,13 @@ Vagrant.configure("2") do |config|
     device.vm.provision :shell , path: "./helper_scripts/config_server.sh"
 
     # Apply the interface re-map
-    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "chmod 755 /home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a a0:00:00:00:00:51 eth0"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:52 eth1"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:0c eth2"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -vm "
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -s"
+    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "chmod 755 /home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a a0:00:00:00:00:51 eth0"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:52 eth1"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:0c eth2"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -vm "
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -s"
     device.vm.provision :shell , :inline => $script
 
   end
@@ -1199,7 +1199,7 @@ Vagrant.configure("2") do |config|
   ##### DEFINE VM for server01 #####
   config.vm.define "server01" do |device|
     device.vm.hostname = "server01"
-    device.vm.box = "boxcutter/ubuntu1604"
+    device.vm.box = "ubuntu/xenial64"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_server01"
@@ -1234,13 +1234,13 @@ Vagrant.configure("2") do |config|
     device.vm.provision :shell , path: "./helper_scripts/config_server.sh"
 
     # Apply the interface re-map
-    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "chmod 755 /home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a a0:00:00:00:00:31 eth0"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:03 eth1"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:17 eth2"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -vm "
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -s"
+    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "chmod 755 /home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a a0:00:00:00:00:31 eth0"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:03 eth1"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:17 eth2"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -vm "
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -s"
     device.vm.provision :shell , :inline => $script
 
   end
@@ -1249,7 +1249,7 @@ Vagrant.configure("2") do |config|
   ##### DEFINE VM for server03 #####
   config.vm.define "server03" do |device|
     device.vm.hostname = "server03"
-    device.vm.box = "boxcutter/ubuntu1604"
+    device.vm.box = "ubuntu/xenial64"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_server03"
@@ -1286,15 +1286,15 @@ Vagrant.configure("2") do |config|
 
 
     # Apply the interface re-map
-    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "chmod 755 /home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a a0:00:00:00:00:33 eth0"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:28 eth1"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:65 eth2"
+    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "chmod 755 /home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a a0:00:00:00:00:33 eth0"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:28 eth1"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:65 eth2"
 
 
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -vm "
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -s"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -vm "
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -s"
     device.vm.provision :shell , :inline => $script
 
   end
@@ -1303,7 +1303,7 @@ Vagrant.configure("2") do |config|
   ##### DEFINE VM for server02 #####
   config.vm.define "server02" do |device|
     device.vm.hostname = "server02"
-    device.vm.box = "boxcutter/ubuntu1604"
+    device.vm.box = "ubuntu/xenial64"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_server02"
@@ -1338,13 +1338,13 @@ Vagrant.configure("2") do |config|
     device.vm.provision :shell , path: "./helper_scripts/config_server.sh"
 
     # Apply the interface re-map
-    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "chmod 755 /home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a a0:00:00:00:00:32 eth0"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:15 eth1"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:1b eth2"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -vm "
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -s"
+    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "chmod 755 /home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a a0:00:00:00:00:32 eth0"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:15 eth1"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:1b eth2"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -vm "
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -s"
     device.vm.provision :shell , :inline => $script
 
   end
@@ -1353,7 +1353,7 @@ Vagrant.configure("2") do |config|
   ##### DEFINE VM for server04 #####
   config.vm.define "server04" do |device|
     device.vm.hostname = "server04"
-    device.vm.box = "boxcutter/ubuntu1604"
+    device.vm.box = "ubuntu/xenial64"
 
 
     device.vm.provider "virtualbox" do |v|
@@ -1389,13 +1389,13 @@ Vagrant.configure("2") do |config|
     device.vm.provision :shell , path: "./helper_scripts/config_server.sh"
 
     # Apply the interface re-map
-    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "chmod 755 /home/vagrant/apply_udev.py"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a a0:00:00:00:00:34 eth0"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:23 eth1"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -a 44:38:39:00:00:32 eth2"
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -vm "
-    device.vm.provision :shell , inline: "/home/vagrant/apply_udev.py -s"
+    device.vm.provision "file", source: "./helper_scripts/apply_udev.py", destination: "/home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "chmod 755 /home/ubuntu/apply_udev.py"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a a0:00:00:00:00:34 eth0"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:23 eth1"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -a 44:38:39:00:00:32 eth2"
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -vm "
+    device.vm.provision :shell , inline: "/home/ubuntu/apply_udev.py -s"
     device.vm.provision :shell , :inline => $script
 
   end
@@ -1405,12 +1405,12 @@ Vagrant.configure("2") do |config|
   config.vm.define "internet" do |device|
     device.vm.hostname = "internet"
     device.vm.box = "CumulusCommunity/cumulus-vx"
-    device.vm.box_version = "3.2.0"
+    device.vm.box_version = "3.2.1"
 
     device.vm.provider "virtualbox" do |v|
       v.name = "#{wbid}_internet"
       v.customize ["modifyvm", :id, '--audiocontroller', 'AC97', '--audio', 'Null']
-      v.memory = 256
+      v.memory = 512
     end
     device.vm.synced_folder ".", "/vagrant", disabled: true
 
