@@ -229,9 +229,9 @@ This can be a bit tricky, to edit the existing topologies you can bring in the r
 The process looks like what is featured below and is also found in the `build.sh` script used to rebuild and update this environment.
 
     vagrant destroy -f
-    wget https://raw.githubusercontent.com/CumulusNetworks/topology_converter/master/topology_converter.py
+    wget https://gitlab.com/cumulus-consulting/tools/topology_converter/-/raw/master/topology_converter.py
     mkdir ./templates/
-    wget -O ./templates/Vagrantfile.j2 https://raw.githubusercontent.com/CumulusNetworks/topology_converter/master/templates/Vagrantfile.j2
+    wget -O ./templates/Vagrantfile.j2 https://gitlab.com/cumulus-consulting/tools/topology_converter/-/raw/master/templates/Vagrantfile.j2
     # edit topology.dot as desired
     python topology_converter.py topology.dot
 
